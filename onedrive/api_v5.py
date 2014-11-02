@@ -6,6 +6,7 @@ import urllib
 import urlparse
 import json
 import types
+import sys
 import itertools as it
 import operator as op
 import functools as ft
@@ -14,7 +15,11 @@ from datetime import datetime, timedelta
 from posixpath import join as ujoin # used for url pahs
 from os.path import join, basename
 
-from onedrive.conf import ConfigMixin
+try:
+    from conf import ConfigMixin
+except ImportError:
+    sys.path.insert(0, os.path.dirname(__file__))
+    from conf import ConfigMixin
 
 import logging
 
